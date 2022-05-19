@@ -1,14 +1,15 @@
 import React from 'react';
 
-const AddTask = ({setNewTask}) => {
+const AddTask = ({newTask}) => {
 
     const handleFormSubmit = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const description = e.target.description.value;
-        console.log(name);
-        console.log(description);
-       setNewTask(name, description);
+        console.log(name, description); 
+        const task = {name, description};
+        newTask=task;     
+       console.log(newTask);
     }
     return (
         <div>         
