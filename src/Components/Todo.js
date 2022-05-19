@@ -35,7 +35,6 @@ const removeTask = (id) => {
 
   return (
     <div>
-      <h3>This is ToDo : {activities.length}</h3>
       <div className="overflow-x-auto">
         <table className="table w-3/4 mx-auto">
           <thead>
