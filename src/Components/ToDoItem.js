@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ToDoItem = ({index, activity}) => {
+const ToDoItem = ({activity, deleteTask}) => {
+    const [done, setDone] = useState(false)
+
+   
   return (
     <tr>
-      <th>{index+1}</th>
-      <td>{activity.name}</td>
+      <th>{activity.id}</th>
+      <td className={done ? "line-through" : ""}>{activity.name}</td>
       <td>{activity.description}</td>
-      <td><button className="btn btn-success">Done</button></td>
-      <td><button className="btn btn-error">Delete</button></td>
+      <td><button onClick={() => setDone(!done)} className="btn btn-success">Done</button></td>
+      <td><button onClick={() => deleteTask(activity.id)} className="btn btn-error">Delete</button></td>
     </tr>
   );
 };

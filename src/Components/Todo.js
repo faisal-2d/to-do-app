@@ -15,13 +15,21 @@ const Todo = () => {
 
 const handleFormSubmit = e => {
     e.preventDefault();
+    const id = activities.length+1;
     const name = e.target.name.value;
     const description = e.target.description.value;
      
-    const task = [{name, description}];
+    const task = [{id, name, description}];
     const updateTask = [...activities, ...task];  
-    setActivities(updateTask);      
+    setActivities(updateTask); 
+    e.target.reset();     
    
+}
+
+const removeTask = (id) => {
+    const deleteTask = activities[id-1];
+    const updateTask = activities.filter(task => task.id !== deleteTask.id);
+    setActivities(updateTask);
 }
 
 
@@ -41,7 +49,7 @@ const handleFormSubmit = e => {
           </thead>
           <tbody>
             {activities?.map((activity, index) => (
-              <ToDoItem key={index} index={index} activity={activity}></ToDoItem>
+              <ToDoItem key={index} index={index} activity={activity} deleteTask={removeTask}></ToDoItem>
             ))}
           </tbody>
         </table>
@@ -56,10 +64,7 @@ const handleFormSubmit = e => {
     <button className="btn btn-wide  btn-success">Submit</button> 
     </form>
 
-
-      </div>
-
-      
+      </div>     
 
 
 
